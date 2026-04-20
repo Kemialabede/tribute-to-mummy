@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@theme {
+  /* Purple (accents) */
+  --color-forest-50: #f5f3ff;
+  --color-forest-100: #ede9fe;
+  --color-forest-200: #ddd6fe;
+  --color-forest-300: #c4b5fd;
+  --color-forest-400: #a78bfa;
+  --color-forest-500: #8b5cf6;
+  --color-forest-600: #7c3aed;
+  --color-forest-700: #6d28d9;
+  --color-forest-800: #5b21b6;
+  --color-forest-900: #4c1d95;
+
+  /* Brown (accents) */
+  --color-amber-50: #fdf6f2;
+  --color-amber-100: #fae8e0;
+  --color-amber-200: #f5d5c8;
+  --color-amber-300: #e9bfae;
+  --color-amber-400: #d99d86;
+  --color-amber-500: #c28565;
+  --color-amber-600: #a86d4c;
+  --color-amber-700: #8c563b;
+  --color-amber-800: #6d442e;
+  --color-amber-900: #4f3424;
+
+  /* Pink (accents) */
+  --color-burgundy-50: #fdf2f8;
+  --color-burgundy-100: #fce7f3;
+  --color-burgundy-200: #fbcfe8;
+  --color-burgundy-300: #f9a8d4;
+  --color-burgundy-400: #f472b6;
+  --color-burgundy-500: #ec4899;
+  --color-burgundy-600: #db2777;
+  --color-burgundy-700: #be185d;
+  --color-burgundy-800: #9d174d;
+  --color-burgundy-900: #831843;
+
+  /* Cream (backgrounds) */
+  --color-cream-50: #fefdfb;
+  --color-cream-100: #fdfaf6;
+  --color-cream-200: #f9f3eb;
+  --color-cream-300: #f4ebde;
+  --color-cream-400: #e8dfcb;
+  --color-cream-500: #d7c8ad;
+  --color-cream-600: #c2aea0;
+  --color-cream-700: #a58d82;
+  --color-cream-800: #8a7369;
+  --color-cream-900: #6d5a51;
+
+  /* Neutral (text & borders) */
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #e5e5e5;
+  --color-neutral-200: #d4d4d4;
+  --color-neutral-300: #a3a3a3;
+  --color-neutral-400: #737373;
+  --color-neutral-500: #525252;
+  --color-neutral-600: #404040;
+  --color-neutral-700: #262626;
+  --color-neutral-800: #171717;
+  --color-neutral-900: #0a0a0a;
+}
+
+.font-cormorant {
+  font-family: var(--font-cormorant);
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-16px) rotate(5deg); }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(-3deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
+}
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-slow { animation: float-slow 9s ease-in-out infinite; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-amber-400);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-amber-500);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1.5s ease-out forwards;
+}
