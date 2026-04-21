@@ -77,7 +77,7 @@ const featuredImages: GalleryImage[] = [
   },
   {
     id: 'featured-10',
-    src: '/whatsapp-10.jpeg',
+    src: '/whatsapp-3.jpeg',
     alt: 'Joyful spirit',
     name: 'Adetutu Grace',
     message: 'A heart full of love and joy.',
@@ -90,24 +90,25 @@ export default function GalleryPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchGalleryImages();
-  }, []);
-
-  const fetchGalleryImages = async () => {
-    try {
-      const res = await fetch('/api/gallery');
-      const data = await res.json();
-      if (Array.isArray(data)) {
-        setApiImages(data);
-      } else if (data.error) {
-        setError(data.details || data.error);
+    const fetchGalleryImages = async () => {
+      try {
+        const res = await fetch('/api/gallery');
+        const data = await res.json();
+        if (Array.isArray(data)) {
+          setApiImages(data);
+        } else if (data.error) {
+          setError(data.details || data.error);
+        }
+      } catch (err) {
+        console.error('Gallery fetch error:', err);
+      } finally {
+        setIsLoading(false);
       }
-    } catch (err) {
-      console.error('Gallery fetch error:', err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    };
+    fetchGalleryImages();
+    const interval = setInterval(fetchGalleryImages, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   const allImages = [...featuredImages, ...apiImages];
 

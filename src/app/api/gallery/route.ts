@@ -18,7 +18,7 @@ export async function GET() {
 
     const { data: tributes, error } = await supabase
       .from('tributes')
-      .select('*')
+      .select('*', { count: 'exact' })
       .range(0, 100);
 
     if (error) {
