@@ -8,11 +8,11 @@ export default function Home() {
       {/* ── HERO ─────────────────────────────────── */}
         <section
           className="relative min-h-screen flex items-center md:items-end overflow-hidden"
-          style={{
-            backgroundImage: `url('https://picsum.photos/1920/1080')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
+          // style={{
+          //   backgroundImage: `url('https://picsum.photos/1920/1080')`,
+          //   backgroundSize: 'cover',
+          //   backgroundPosition: 'center',
+          // }}
         >
         {/* Fallback gradient shown while image loads */}
         <div className="absolute inset-0 bg-gradient-to-br from-cream-100 via-cream-50 to-cream-200" />
@@ -81,7 +81,7 @@ export default function Home() {
                 </p>
 
                 {/* WhatsApp Images Preview */}
-                <div className="flex items-center gap-2 md:gap-4">
+                <div className="hidden md:flex items-center gap-2 md:gap-4">
                   <div className="flex -space-x-1.5 md:-space-x-3">
                     <img src="/whatsapp-2.jpeg"
                          alt="Memory 1"

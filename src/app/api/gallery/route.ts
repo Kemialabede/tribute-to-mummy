@@ -19,18 +19,22 @@ export async function GET() {
     const { data: tributes, error } = await supabase
       .from('tributes')
       .select('id, name, image_url, message, created_at')
+      .not('image_url', 'is', null)
       .order('created_at', { ascending: false });
+
+    console.log('Tributes data:', tributes);
+    console.log('Tributes error:', error);
 
     if (error) {
       console.error('Supabase error:', error);
       return NextResponse.json(
-        { error: 'Failed to fetch gallery images' },
+        { error: 'Failed to fetch gallery images', details: error.message },
         { status: 500 }
       );
     }
 
     const galleryImages = (tributes || [])
-      .filter((tribute) => tribute.image_url !== null)
+      .filter((tribute) => tribute.image_url)
       .map((tribute) => ({
         id: tribute.id,
         src: tribute.image_url,
@@ -38,6 +42,8 @@ export async function GET() {
         name: tribute.name,
         message: tribute.message,
       }));
+
+    console.log('Gallery images:', galleryImages);
 
     return NextResponse.json(galleryImages);
   } catch (error) {

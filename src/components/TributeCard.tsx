@@ -33,16 +33,7 @@ const TributeCard = ({ tribute }: TributeCardProps) => {
                       opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
       <div className="flex items-start gap-3 md:gap-5">
-        {tribute.image_url ? (
-          <Image
-            src={tribute.image_url}
-            alt={tribute.name}
-            width={48}
-            height={48}
-            className="rounded-full object-cover ring-2 ring-amber-200/40
-                       group-hover:ring-amber-400/60 transition-all duration-500 flex-shrink-0"
-          />
-        ) : (
+        {
           <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br
                           from-forest-50 to-forest-100 flex items-center justify-center
                           ring-1 ring-forest-200/60">
@@ -50,7 +41,7 @@ const TributeCard = ({ tribute }: TributeCardProps) => {
               {tribute.name[0]}
             </span>
           </div>
-        )}
+        }
 
         <div className="flex-1 min-w-0">
           <div className="flex items-baseline justify-between gap-2">
