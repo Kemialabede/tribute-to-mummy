@@ -18,12 +18,8 @@ export async function GET() {
 
     const { data: tributes, error } = await supabase
       .from('tributes')
-      .select('id, name, image_url, message, created_at')
-      .not('image_url', 'is', null)
-      .order('created_at', { ascending: false });
-
-    console.log('Tributes data:', tributes);
-    console.log('Tributes error:', error);
+      .select('*')
+      .range(0, 100);
 
     if (error) {
       console.error('Supabase error:', error);
@@ -34,7 +30,8 @@ export async function GET() {
     }
 
     const galleryImages = (tributes || [])
-      .filter((tribute) => tribute.image_url)
+      .filter((t) => t.image_url && typeof t.image_url === 'string' && t.image_url.trim().length > 0)
+      .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
       .map((tribute) => ({
         id: tribute.id,
         src: tribute.image_url,
@@ -42,8 +39,6 @@ export async function GET() {
         name: tribute.name,
         message: tribute.message,
       }));
-
-    console.log('Gallery images:', galleryImages);
 
     return NextResponse.json(galleryImages);
   } catch (error) {

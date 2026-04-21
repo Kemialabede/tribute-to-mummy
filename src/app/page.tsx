@@ -126,7 +126,7 @@ export default function Home() {
               <div>
                 <p className="text-neutral-500/60 text-xs tracking-[0.3em] uppercase font-sans mb-1">Born</p>
                 <p className="font-cormorant text-neutral-800/70 text-xl md:text-2xl tracking-wide">September 5</p>
-                <p className="font-cormorant text-neutral-600/80 text-3xl md:text-4xl font-light">1968</p>
+                <p className="font-cormorant text-neutral-600/80 text-3xl md:text-4xl font-light">1967</p>
               </div>
               <div className="w-px h-10 md:h-12 bg-amber-500/60 ml-2" />
               <div>

@@ -53,8 +53,7 @@ const TributeForm = ({ onTributeCreated }: TributeFormProps) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          shared_by: formData.name,
-          name: 'John Doe',
+          name: formData.name,
           message: formData.message,
           imageUrl,
         }),

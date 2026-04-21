@@ -96,13 +96,14 @@ export default function GalleryPage() {
   const fetchGalleryImages = async () => {
     try {
       const res = await fetch('/api/gallery');
-      if (!res.ok) {
-        throw new Error('Failed to fetch gallery allImages');
-      }
       const data = await res.json();
-      setApiImages(data);
+      if (Array.isArray(data)) {
+        setApiImages(data);
+      } else if (data.error) {
+        setError(data.details || data.error);
+      }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to load gallery');
+      console.error('Gallery fetch error:', err);
     } finally {
       setIsLoading(false);
     }
@@ -131,8 +132,8 @@ export default function GalleryPage() {
         )}
 
         {error && (
-          <div className="text-center py-12 text-red-600 font-sans">
-            {error}
+          <div className="text-center py-12 text-red-500 font-sans">
+            Error: {error}
           </div>
         )}
 
@@ -142,7 +143,7 @@ export default function GalleryPage() {
           </div>
         )}
 
-        {!isLoading && !error && allImages.length > 0 && (
+        {!isLoading && allImages.length > 0 && (
           <GalleryGrid images={allImages} />
         )}
       </div>
