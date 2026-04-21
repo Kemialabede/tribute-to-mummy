@@ -18,7 +18,7 @@ export async function GET() {
 
     const { data: tributes, error } = await supabase
       .from('tributes')
-      .select('id, name, shared_by, image_url, message, created_at')
+      .select('id, name, image_url, message, created_at')
       .order('created_at', { ascending: false });
 
     if (error) {
@@ -29,14 +29,13 @@ export async function GET() {
       );
     }
 
-const galleryImages = tributes
+    const galleryImages = (tributes || [])
       .filter((tribute) => tribute.image_url !== null)
       .map((tribute) => ({
         id: tribute.id,
         src: tribute.image_url,
         alt: `Tribute by ${tribute.name}`,
         name: tribute.name,
-        shared_by: tribute.shared_by,
         message: tribute.message,
       }));
 

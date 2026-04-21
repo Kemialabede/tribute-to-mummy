@@ -47,7 +47,7 @@ const TributeCard = ({ tribute }: TributeCardProps) => {
                           from-forest-50 to-forest-100 flex items-center justify-center
                           ring-1 ring-forest-200/60">
             <span className="font-['Cormorant_Garamond'] text-neutral-700 text-lg md:text-xl italic">
-              {tribute?.shared_by?.[0]}
+              {tribute.name[0]}
             </span>
           </div>
         )}

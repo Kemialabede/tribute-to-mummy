@@ -42,25 +42,24 @@ export async function POST(request: NextRequest) {
   try {
     const supabase = getSupabase();
     const body = await request.json();
-    const { name, shared_by, message, imageUrl } = body;
+    const { name, message, imageUrl } = body;
 
-    if (!name || !shared_by || !message) {
+    if (!message) {
       return NextResponse.json(
-        { error: 'Name, shared_by, and message are required' },
+        { error: 'Message is required' },
         { status: 400 }
       );
     }
 
+    const insertData = {
+      name: name || 'John Doe',
+      message,
+      image_url: imageUrl || null,
+    };
+
     const { data, error } = await supabase
       .from('tributes')
-      .insert([
-        {
-          name,
-          shared_by,
-          message,
-          image_url: imageUrl || null,
-        },
-      ])
+      .insert([insertData])
       .select()
       .single();
 

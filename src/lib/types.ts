@@ -4,7 +4,6 @@ export interface Tribute {
   message: string;
   image_url: string | null;
   created_at: string;
-  shared_by: string;
 }
 
 export interface GalleryImage {
@@ -12,6 +11,5 @@ export interface GalleryImage {
   src: string;
   alt: string;
   name: string;
-  shared_by: string;
   message: string;
 }

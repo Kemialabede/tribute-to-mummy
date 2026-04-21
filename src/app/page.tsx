@@ -86,7 +86,7 @@ export default function Home() {
                     <img src="/whatsapp-2.jpeg"
                          alt="Memory 1"
                          className="w-6 h-6 md:w-10 md:h-10 rounded-full object-cover border-2 border-cream-100 ring-2 ring-burgundy-200/50" />
-                    <img src="/whatsapp-3.jpeg"
+                    <img src="/whatsapp-4.jpeg"
                          alt="Memory 2"
                          className="w-6 h-6 md:w-10 md:h-10 rounded-full object-cover border-2 border-cream-100 ring-2 ring-burgundy-200/50" />
                   </div>
@@ -179,7 +179,7 @@ export default function Home() {
                <Image src="/whatsapp-1.jpeg" alt="Memory 1" fill className="object-cover" />
              </div>
              <div className="relative h-56 md:h-96 rounded-2xl overflow-hidden shadow-lg">
-               <Image src="/whatsapp-2.jpeg" alt="Memory 2" fill className="object-cover" />
+               <Image src="/whatsapp-5.jpeg" alt="Memory 2" fill className="object-cover" />
              </div>
            </div>
          </div>
@@ -215,7 +215,7 @@ export default function Home() {
                <img src="/whatsapp-2.jpeg"
                     alt="Memory 2"
                     className="w-8 h-8 md:w-14 md:h-14 rounded-full object-cover border-2 border-cream-100 ring-2 ring-burgundy-300/60 shadow-md" />
-               <img src="/whatsapp-3.jpeg"
+               <img src="/whatsapp-4.jpeg"
                     alt="Memory 3"
                     className="w-8 h-8 md:w-14 md:h-14 rounded-full object-cover border-2 border-cream-100 ring-2 ring-burgundy-300/60 shadow-md" />
              </div>

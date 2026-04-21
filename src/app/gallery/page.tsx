@@ -8,12 +8,84 @@ interface GalleryImage {
   src: string;
   alt: string;
   name: string;
-  shared_by: string;
   message: string;
 }
 
+const featuredImages: GalleryImage[] = [
+  {
+    id: 'featured-1',
+    src: '/whatsapp-2.jpeg',
+    alt: 'Beautiful smile',
+    name: 'Adetutu Grace',
+    message: 'Your smile lit up every room.',
+  },
+  {
+    id: 'featured-2',
+    src: '/whatsapp-6.jpeg',
+    alt: 'Nature lover',
+    name: 'Adetutu Grace',
+    message: 'Loved nature and peaceful moments.',
+  },
+  {
+    id: 'featured-3',
+    src: '/whatsapp-3.jpeg',
+    alt: 'Joyful spirit',
+    name: 'Adetutu Grace',
+    message: 'A heart full of love and joy.',
+  },
+  {
+    id: 'featured-3',
+    src: '/whatsapp-4.jpeg',
+    alt: 'Joyful spirit',
+    name: 'Adetutu Grace',
+    message: 'A heart full of love and joy.',
+  },
+  {
+    id: 'featured-3',
+    src: '/whatsapp-5.jpeg',
+    alt: 'Joyful spirit',
+    name: 'Adetutu Grace',
+    message: 'A heart full of love and joy.',
+  },
+  {
+    id: 'featured-3',
+    src: '/whatsapp-8.jpeg',
+    alt: 'Joyful spirit',
+    name: 'Adetutu Grace',
+    message: 'A heart full of love and joy.',
+  },
+  {
+    id: 'featured-3',
+    src: '/whatsapp-7.jpeg',
+    alt: 'Joyful spirit',
+    name: 'Adetutu Grace',
+    message: 'A heart full of love and joy.',
+  },
+  {
+    id: 'featured-3',
+    src: '/whatsapp-1.jpeg',
+    alt: 'Joyful spirit',
+    name: 'Adetutu Grace',
+    message: 'A heart full of love and joy.',
+  },
+  {
+    id: 'featured-3',
+    src: '/whatsapp-9.jpeg',
+    alt: 'Joyful spirit',
+    name: 'Adetutu Grace',
+    message: 'A heart full of love and joy.',
+  },
+  {
+    id: 'featured-3',
+    src: '/whatsapp-9.jpeg',
+    alt: 'Joyful spirit',
+    name: 'Adetutu Grace',
+    message: 'A heart full of love and joy.',
+  },
+];
+
 export default function GalleryPage() {
-  const [images, setImages] = useState<GalleryImage[]>([]);
+  const [apiImages, setApiImages] = useState<GalleryImage[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -25,16 +97,18 @@ export default function GalleryPage() {
     try {
       const res = await fetch('/api/gallery');
       if (!res.ok) {
-        throw new Error('Failed to fetch gallery images');
+        throw new Error('Failed to fetch gallery allImages');
       }
       const data = await res.json();
-      setImages(data);
+      setApiImages(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load gallery');
     } finally {
       setIsLoading(false);
     }
   };
+
+  const allImages = [...featuredImages, ...apiImages];
 
   return (
     <div className="min-h-screen py-16 md:py-20 px-4 bg-white">
@@ -62,14 +136,14 @@ export default function GalleryPage() {
           </div>
         )}
 
-        {!isLoading && !error && images.length === 0 && (
+        {!isLoading && !error && allImages.length === 0 && (
           <div className="text-center py-12 text-neutral-500 font-sans">
             No images in the gallery yet. Be the first to upload a photo with your tribute.
           </div>
         )}
 
-        {!isLoading && !error && images.length > 0 && (
-          <GalleryGrid images={images} />
+        {!isLoading && !error && allImages.length > 0 && (
+          <GalleryGrid images={allImages} />
         )}
       </div>
     </div>
